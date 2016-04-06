@@ -27,24 +27,24 @@ app.get('/',
 );
 
 app.get('/info',
-+  function (req, res) {
-+    logger.debug('inside /info');
-+    var url = process.env.API_URL || 'http://localhost:3001';
-+    logger.debug('API_URL:' + url);
-+
-+    request(url + '/info', function (err, apiRes, body) {
-+      if (err) {
-+        res.status(apiRes.statusCode);
-+        res.send(err);
-+      } else {
-+        logger.debug('made a request to ', url);
-+        logger.debug('got a response:', body);
-+        res.status(200);
-+        res.send(body);
-+      }
-+    });
-+  }
-+);
+  function (req, res) {
+    logger.debug('inside /info');
+    var url = process.env.API_URL || 'http://localhost:3001';
+    logger.debug('API_URL:' + url);
+
+    request(url + '/info', function (err, apiRes, body) {
+      if (err) {
+        res.status(apiRes.statusCode);
+        res.send(err);
+      } else {
+        logger.debug('made a request to ', url);
+        logger.debug('got a response:', body);
+        res.status(200);
+        res.send(body);
+      }
+    });
+  }
+);
 app.get('/env',
   function (req, res) {
     res.status(200).json({
