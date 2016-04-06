@@ -60,7 +60,7 @@ app.factory('factory',
     return {
       info: function (url) {
         console.log(url);
-        return $http.get(url + '/info');
+        return $http.get('/info');
       }
     };
   }

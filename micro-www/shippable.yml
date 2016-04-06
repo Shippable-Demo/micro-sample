@@ -7,3 +7,19 @@ node_js:
 
 before_install:
     - node --version
+build:
+  ci:
+    - echo "hello world"
+  on_success:
+    - sudo docker -v
+    - echo "$BRANCH.$SHIPPABLE_BUILD_NUMBER"
+    - sudo docker build -t abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER .
+    - sudo docker push abhiitkini/micro-www:$BRANCH.$BUILD_NUMBER
+
+integrations:
+  hub:
+    - integrationName: "abhijit-docker"
+      type: docker
+      branches:
+        only:
+          - master
