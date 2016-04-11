@@ -16,12 +16,7 @@ build:
         image_tag: latest
         pull: false
 
-   ci:
-       - mkdir -p ../shippable/testresults
-       - mkdir -p ../shippable/codecoverage
-       - cd micro-api
-       - npm install
-       - grunt
+   
    on_success:
        - cd ..
        - cd micro-www && docker build -t abhijitkini/micro-www .
