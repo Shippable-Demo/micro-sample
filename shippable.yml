@@ -35,3 +35,4 @@ integrations:
     hub:
         - integrationName: Docker-Integration
           type: docker
+          
