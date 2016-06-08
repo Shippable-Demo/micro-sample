@@ -10,7 +10,7 @@ env:
 
 build:
    pre_ci_boot:
-        image_name: elgalu/selenium/
+        image_name: elgalu/selenium
         image_tag: 2.53.0o
         pull: true
 
