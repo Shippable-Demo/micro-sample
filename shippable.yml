@@ -9,12 +9,10 @@ env:
     - XUNIT_FILE=../shippable/testresults/result.xml API_PORT=3001
 
 build:
-   pre_ci:
-       - cd micro-api && docker build -t abhijitkini/micro-api .
    pre_ci_boot:
-        image_name: abhijitkini/micro-api
+        image_name: drydock/u14pyt
         image_tag: latest
-        pull: false
+        pull: true
 
    ci:
        - mkdir -p ../shippable/testresults
