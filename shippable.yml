@@ -1,7 +1,7 @@
 # language setting
 language: node_js
 
-# version numbers, testing against one version of nodes
+# version numbers, testing against one version of node
 node_js:
     - 0.12
 
@@ -9,10 +9,12 @@ env:
     - XUNIT_FILE=../shippable/testresults/result.xml API_PORT=3001
 
 build:
+   pre_ci:
+       - cd micro-api && docker build -t abhijitkini/micro-api .
    pre_ci_boot:
-        image_name: elgalu/selenium
-        image_tag: 2.53.0o
-        pull: true
+        image_name: abhijitkini/micro-api
+        image_tag: latest
+        pull: false
 
    ci:
        - mkdir -p ../shippable/testresults
