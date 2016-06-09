@@ -1,7 +1,7 @@
 # language setting
 language: node_js
 
-# version numbers, testing against one version of nodes
+# version numbers, testing against one version of node
 node_js:
     - 0.12
 
