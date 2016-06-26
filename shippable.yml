@@ -23,15 +23,16 @@ build:
        - npm install
        - grunt
 
-   on_success:
+   push:
        - cd ..
        - cd micro-www && docker build -t abhijitkini/micro-www .
-       - docker tag -f abhijitkini/micro-www:latest abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
-       - docker tag -f abhijitkini/micro-api:latest abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
-       - docker push abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
-       - docker push abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
+       - docker tag -f abhijitkini/micro-www:latest us.gcr.io/modern-cipher-135423/micro-www:$BRANCH.$BUILD_NUMBER
+       - docker tag -f abhijitkini/micro-api:latest us.gcr.io/ modern-cipher-135423/micro-api:$BRANCH.$BUILD_NUMBER
+       - docker push us.gcr.io/modern-cipher-135423/micro-api:$BRANCH.$BUILD_NUMBER
+       - docker push us.gcr.io/modern-cipher-135423/micro-www:$BRANCH.$BUILD_NUMBER
 
 integrations:
     hub:
-        - integrationName: Docker-Integration
-          type: docker
+        - integrationName: GoogleReg
+          type: gcr
+          agent_only: true
