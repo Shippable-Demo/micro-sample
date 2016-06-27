@@ -3,35 +3,35 @@ language: node_js
 
 # version numbers, testing against one version of node
 node_js:
-    - 0.12
+  - 0.12
 
 env:
-    - XUNIT_FILE=../shippable/testresults/result.xml API_PORT=3001
+  - XUNIT_FILE=../shippable/testresults/result.xml API_PORT=3001
 
 build:
-   pre_ci:
-       - cd micro-api && docker build -t abhijitkini/micro-api .
-   pre_ci_boot:
-        image_name: abhijitkini/micro-api
-        image_tag: latest
-        pull: false
+  pre_ci:
+     - cd micro-api && docker build -t abhijitkini/micro-api .
+  pre_ci_boot:
+    image_name: abhijitkini/micro-api
+    image_tag: latest
+    pull: false
 
-   ci:
-       - mkdir -p ../shippable/testresults
-       - mkdir -p ../shippable/codecoverage
-       - cd micro-api
-       - npm install
-       - grunt
+  ci:
+     - mkdir -p ../shippable/testresults
+     - mkdir -p ../shippable/codecoverage
+     - cd micro-api
+     - npm install
+     - grunt
 
-push:
-   - cd ..
-   - cd micro-www && docker build -t abhijitkini/micro-www .
-   - docker tag -f abhijitkini/micro-www:latest abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
-   - docker tag -f abhijitkini/micro-api:latest abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
-   - docker push abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
-   - docker push abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
+  push:
+     - cd ..
+     - cd micro-www && docker build -t abhijitkini/micro-www .
+     - docker tag -f abhijitkini/micro-www:latest abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
+     - docker tag -f abhijitkini/micro-api:latest abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
+     - docker push abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
+     - docker push abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
 
 integrations:
-   hub:
+  hub:
      - integrationName: Docker-Integration
        type: docker
