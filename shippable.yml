@@ -24,14 +24,14 @@ build:
        - grunt
 
 push:
-  - cd ..
-  - cd micro-www && docker build -t abhijitkini/micro-www .
-  - docker tag -f abhijitkini/micro-www:latest abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
-  - docker tag -f abhijitkini/micro-api:latest abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
-  - docker push abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
-  - docker push abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
+   - cd ..
+   - cd micro-www && docker build -t abhijitkini/micro-www .
+   - docker tag -f abhijitkini/micro-www:latest abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
+   - docker tag -f abhijitkini/micro-api:latest abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
+   - docker push abhijitkini/micro-api:$BRANCH.$BUILD_NUMBER
+   - docker push abhijitkini/micro-www:$BRANCH.$BUILD_NUMBER
 
 integrations:
-  hub:
-    - integrationName: Docker-Integration
-      type: docker
+   hub:
+     - integrationName: Docker-Integration
+       type: docker
